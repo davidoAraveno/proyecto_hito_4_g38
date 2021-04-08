@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_08_024700) do
+ActiveRecord::Schema.define(version: 2021_04_08_030553) do
 
   create_table "celebrations", force: :cascade do |t|
     t.string "address"
@@ -47,6 +47,8 @@ ActiveRecord::Schema.define(version: 2021_04_08_024700) do
     t.integer "invited_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "invited_confirm", default: false
+    t.string "message_invited"
     t.index ["invited_id"], name: "index_marriage_inviteds_on_invited_id"
     t.index ["marriage_id"], name: "index_marriage_inviteds_on_marriage_id"
   end
