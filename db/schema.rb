@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_08_022240) do
+ActiveRecord::Schema.define(version: 2021_04_08_024700) do
 
   create_table "celebrations", force: :cascade do |t|
     t.string "address"
@@ -73,6 +73,13 @@ ActiveRecord::Schema.define(version: 2021_04_08_022240) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["marriage_id"], name: "index_template_invitations_on_marriage_id"
+  end
+
+  create_table "tutorials", force: :cascade do |t|
+    t.string "name"
+    t.string "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
