@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  image: MyString
+  marriage: one
+  message_personalized: MyString
+
+two:
+  image: MyString
+  marriage: two
+  message_personalized: MyString

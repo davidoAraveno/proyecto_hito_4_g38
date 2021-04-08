@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_08_012616) do
+ActiveRecord::Schema.define(version: 2021_04_08_022240) do
 
   create_table "celebrations", force: :cascade do |t|
     t.string "address"
@@ -64,6 +64,15 @@ ActiveRecord::Schema.define(version: 2021_04_08_012616) do
     t.string "code_gift"
     t.string "enterprise_gift"
     t.string "password"
+  end
+
+  create_table "template_invitations", force: :cascade do |t|
+    t.string "image"
+    t.integer "marriage_id"
+    t.string "message_personalized"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["marriage_id"], name: "index_template_invitations_on_marriage_id"
   end
 
 end
