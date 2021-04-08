@@ -10,7 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_07_232706) do
+ActiveRecord::Schema.define(version: 2021_04_08_012616) do
+
+  create_table "celebrations", force: :cascade do |t|
+    t.string "address"
+    t.string "hour"
+    t.string "date"
+    t.integer "marriage_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["marriage_id"], name: "index_celebrations_on_marriage_id"
+  end
+
+  create_table "ceremonies", force: :cascade do |t|
+    t.string "address"
+    t.string "hour"
+    t.string "date"
+    t.integer "marriage_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["marriage_id"], name: "index_ceremonies_on_marriage_id"
+  end
 
   create_table "inviteds", force: :cascade do |t|
     t.string "name"
@@ -19,6 +39,7 @@ ActiveRecord::Schema.define(version: 2021_04_07_232706) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "code"
   end
 
   create_table "marriage_inviteds", force: :cascade do |t|
@@ -39,6 +60,10 @@ ActiveRecord::Schema.define(version: 2021_04_07_232706) do
     t.string "email_name2"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "link_gift"
+    t.string "code_gift"
+    t.string "enterprise_gift"
+    t.string "password"
   end
 
 end
