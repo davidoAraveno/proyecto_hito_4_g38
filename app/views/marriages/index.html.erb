@@ -13,3 +13,23 @@
         <div><%= f.submit 'editar' %></div>
     <% end %>
 </div>
+
+<%# ///////////lista de productos contratados////////////////////
+no tengo como hacer que la lista este separada de los productos entregados, solicitados y por entregar. Ya que en mi aplicacion, un matrimonio contrata el servicio y adquiere el derecho a poder hacer una lista de invitados y crear las invitaciones para ellos %>
+
+<div>
+    <a href="<%= m_s_path(producto: 'lista-invitados') %>">
+        <div id="lista-invitados" class="producto_contratado">
+            <p> producto 1: lista de invitados </p>
+        </div>
+    </a>
+    <a href="<%= m_s_path(producto: 'invitaciones') %>">
+        <div id="invitacion" class="producto_contratado">
+            <p> producto2: crear invitaciones </p>
+        </div>
+    </a>
+    <a href="#">
+        <div id="tutorial" class="producto_contratado">
+        </div>
+    </a>
+</div>

@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  
+  #rutas invitaciones para invitados
+  patch 'invitations/update', to: 'invitations#update', as: 'i_u'
 
   # rutas administradores
   get 'admins/index', to: 'admins#index', as: 'a_i'
@@ -9,9 +12,11 @@ Rails.application.routes.draw do
   
   #rutas invitados
   get 'inviteds/index', to: 'inviteds#index', as: 'i_i'
+  post 'inviteds/create', to: 'inviteds#create', as: 'i_c'
   
   # rutas novios
   get 'marriages/index', to: 'marriages#index', as: 'm_i'
+  get 'marriages/show', to: 'marriages#show', as: 'm_s'
   patch 'marriages/update', to: 'marriages#update', as: 'm_u'
   
   # rutas para inicio y fin de sesion

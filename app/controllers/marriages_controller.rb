@@ -5,6 +5,16 @@ class MarriagesController < ApplicationController
     @marriage = Marriage.find(session[:marriage])
   end
 
+  def show
+    if params[:producto] == 'lista-invitados'
+      @invited = Invited.new
+      @inviteds_marriage = Invited.marriage(session[:marriage])
+    elsif params[:producto] == 'invitaciones'
+      @templates_invitations = TemplateInvitation.all
+      @invitation_active = TemplateInvitation.active_invitation(session[:marriage])
+    end
+  end
+
   def new
     @marriage = Marriage.new
   end

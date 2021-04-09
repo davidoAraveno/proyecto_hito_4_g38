@@ -25,7 +25,19 @@ Marriage.create(
             link_gift: "https://club.noviosparis.cl/home/couple-catalog/18156652",
             code_gift: "73403492",
             enterprise_gift: "paris",
-            password_digest: "jk45003"
+            password_digest: "humanos"
+        },
+        {
+            name1: 'perro',
+            name2: 'perrra',
+            phone_name1: "1111",
+            phone_name2: "2222",
+            email_name1: "perro@mail.com",
+            email_name2: "perra@mail.com",
+            link_gift: "https://club.noviosparis.cl/home/couple-catalog/18156652",
+            code_gift: "7456",
+            enterprise_gift: "paris",
+            password_digest: "perros"
         }
     ]
 )
@@ -77,13 +89,13 @@ Marriage.all.each do |i|
             }
         ]
     )
-    TemplateInvitation.create(
-        [
-            {
-                image: "https://marketplace.canva.com/EADicj9jELQ/1/0/400w/canva-invitaci%C3%B3n-boda-de-invierno-color-morado-con-guirnalda-OAxj11LSTDk.png",
-                marriage_id: i.id,
-                message_personalized: "estamos muy felices de invitarte a nuestro matrimonio"
-            }
-        ]
-    )
 end
+
+TemplateInvitation.create(
+    [
+        {
+            image: "https://marketplace.canva.com/EADicj9jELQ/1/0/400w/canva-invitaci%C3%B3n-boda-de-invierno-color-morado-con-guirnalda-OAxj11LSTDk.png",
+            message_personalized: "estamos muy felices de invitarte a nuestro matrimonio"
+        }
+    ]
+)

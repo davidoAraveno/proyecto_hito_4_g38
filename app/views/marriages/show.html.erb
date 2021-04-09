@@ -1,0 +1,58 @@
+<% if params[:error] %>
+    <h4 style="color: red;"> El usuario no pudo ser creado </h4>
+<% end %>
+
+<%# //////// vista show si entran a ver lista de invitados////////// %>
+<% if params[:producto] == 'lista-invitados' %>
+    <div style="display: flex, justify-content: space-around">
+        <div>
+            <%= form_with(url: i_c_path, model: @invited, remote: true) do |f| %>
+
+                <% @invited.attributes.each do |attr_name, attr_value| %>
+                    <% unless attr_name == "created_at" || attr_name == "updated_at" || attr_name == "id"%>
+
+                        <% unless attr_name == "password_digest" %>
+                            <%= f.label attr_name%><br>
+                        <% else %>
+                            <%= f.label "codigo" %><br>
+                        <% end %>
+                        <%= f.text_field attr_name %><br>
+
+                    <% end %>
+                <% end %>
+
+                <%= f.submit 'crear invitado' %>
+            <% end %>
+        </div>
+
+        <%# //////// lista de invitados del usuario activo//////////// %>
+        <div id="lista_invitados_matrimonio">
+            <h4> Lista de invitados </h4>
+            <% @inviteds_marriage.each do |invited| %>
+                <p> <%= invited.invited.name %> </p>
+            <% end %>
+        </div>
+    </div>
+
+<% elsif params[:producto] == 'invitaciones' %>
+<%# //////// vista show si entran a ver las invitaciones para los invitados//////////// %>
+    <% unless @invitation_active %>
+        <div id="invitaciones_partes">
+            <% @templates_invitations.each do |template| %>
+                <ul>
+                    <li> <img src="<%= template.image%>"> </li>
+                    <li> <%= link_to 'seleccionar', i_u_path(template: template.id), method: :patch, remote: true %> </li>
+                </ul>
+            <% end %>
+        </div>
+    <% else %>
+        <h4> Haz adquirido esta postal </h4>
+        <img src="<%= @invitation_active.image %>">
+        <p> Pertenece a: <%= @invitation_active.marriage.name1 %> y <%= @invitation_active.marriage.name2 %> </p>
+        <%= form_with(url: i_u_path(template: @invitation_active.id), local:true, method: :patch) do |f| %>
+            <%= f.label 'crea un texto personalizado para la invitacion' %>
+            <%=f.text_area :message_personalized %>
+            <%= f.submit "asignar texto" %>
+        <% end %>
+    <% end %>
+<% end %>

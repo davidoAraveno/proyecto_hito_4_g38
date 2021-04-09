@@ -1,0 +1,11 @@
+var invitaciones_partes = document.getElementById("invitaciones_partes");
+invitaciones_partes.innerHTML = `
+    <h4> Haz adquirido esta postal </h4>
+    <img src="<%= @invitation.image %>">
+    <p> Pertenece a: <%= @invitation.marriage.name1 %> y <%= @invitation.marriage.name2 %> </p>
+    <%= form_with(url: i_u_path(template: @invitation.id), local:true, method: :patch) do |f| %>
+        <%= f.label 'crea un texto personalizado para la invitacion' %>
+        <%= f.text_area :message_personalized %>
+        <%= f.submit "asignar texto" %>
+    <% end %>
+`
