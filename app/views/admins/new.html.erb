@@ -1,0 +1,6 @@
+<%# inicio de sesion de administradores %>
+<%=form_with(url: a_c_path, model: @admin, local:true) do |f| %>
+    <%= f.text_field :name, placeholder: 'ingrese su nombre' %>
+    <%= f.password_field :password, placeholder: 'ingrese su contraseña' %>
+    <%= f.submit 'entrar' %>
+<% end %>

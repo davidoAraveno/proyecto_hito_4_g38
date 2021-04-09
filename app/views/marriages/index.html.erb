@@ -1,2 +1,15 @@
-<h1>Marriages#index</h1>
-<p>Find me in app/views/marriages/index.html.erb</p>
+<h3> Estos son sus datos en caso que quiera editarlos </h3>
+<div id="edit_info">
+    <%= form_with(url: m_u_path(id: @marriage.id), model: @marriage, remote: true, method: :patch) do |f| %>
+        <%# ////ciclo que recorre los atributos de la instancia del usuario activo////// %>
+        <% @marriage.attributes.each do |attr_name, attr_value|%>
+            <% unless attr_name == "id" || attr_name == "created_at" || attr_name == "updated_at" || attr_name == "password_digest" %>
+                <div>
+                    <%= f.label attr_name %>
+                    <%= f.text_field attr_name %>
+                </div>
+            <% end %>
+        <% end %>
+        <div><%= f.submit 'editar' %></div>
+    <% end %>
+</div>

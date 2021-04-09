@@ -1,0 +1,21 @@
+var edit_info = document.getElementById("edit_info");
+edit_info.innerHTML ="";
+edit_info.innerHTML =`
+<%= form_with(url: m_u_path(id: @marriage.id), model: @marriage, remote: true, method: :patch) do |f| %>
+    <% @marriage.attributes.each do |attr_name, attr_value|%>
+        <% unless attr_name == "id" || attr_name == "created_at" || attr_name == "updated_at" || attr_name == "password_digest" %>
+            <div>
+                <%= f.label attr_name %>
+                <%= f.text_field attr_name %>
+            </div>
+        <% end %>
+    <% end %>
+    <div><%= f.submit 'editar' %></div>
+<% end %>
+`
+
+alert("datos actualizados")
+
+
+
+

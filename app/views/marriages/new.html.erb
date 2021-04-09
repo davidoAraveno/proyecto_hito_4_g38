@@ -1,0 +1,13 @@
+
+<%# #formulario para crear un matrimonio %>
+<%= form_with(url: m_c_path,model: @marriage, local: true) do |f| %>
+    <%= f.text_field :name1, placeholder: "nombre1" %>
+    <%= f.text_field :name2, placeholder:"nombre2" %>
+    <%= f.text_field :phone_name1, placeholder:"fono nombre1" %>
+    <%= f.text_field :phone_name2, placeholder:"fono nombre2" %>
+    <%= f.text_field :email_name1, placeholder:"email nombre1" %>
+    <%= f.text_field :email_name2, placeholder:"email nombre2" %>
+    <%= f.password_field :password_digest, placeholder:"password" %>
+
+    <%= f.submit 'crear matrimonio' %>
+<% end %>

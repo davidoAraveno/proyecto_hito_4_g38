@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  #inicio de sesion para matrimonios y invitados
   def new
     @marriage = Marriage.new
     @invited = Invited.new

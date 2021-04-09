@@ -1,0 +1,51 @@
+<div style="display: flex; justify-content: space-around; height:50vh">
+
+    <%# ///// todos los matrimonios///// %>
+    <div>
+        <h4> buscar por matrimonio </h4>
+        <% @marriages.each do |marriage| %>
+            <ul>
+                <li> <%= marriage.name1 %> </li>
+                <li> <%= marriage.name2 %> </li>
+                <li> <%= link_to 'seleccionar', a_s_path(marriage: marriage.id) %>
+            </ul>
+        <% end %>
+    </div>
+
+    <%# ///// todos los invitados de todos los matrimonios///////// %>
+    <div>
+        <h4> buscar por invitado </h4>
+        <% @inviteds.each do |invited| %>
+            <ul>
+                <li> <%= link_to "#{invited.name} #{invited.last_name}", a_s_path(invited: invited.id) %> </li>
+            </ul>
+        <% end %>
+    </div>
+
+    <%# ////// todas las ceremonias ///////// %>
+    <div>
+        <h4> buscar por ceremonia </h4>
+
+        <% @ceremonies.each do |ceremony| %>
+            <ul>
+                <li> <%= ceremony.address %> </li>
+            </ul>
+        <% end %>
+    </div>
+
+
+    <%# ///// todas las celebraciones///////////// %>
+    <div>
+        <h4> buscar por celebracion </h4>
+
+        <% @celebrations.each do |celebration| %>
+            <ul>
+                <li> <%= celebration.address %> </li>
+            </ul>
+        <% end %>
+    </div>
+
+    <br>
+
+</div>
+<%= link_to 'crear matrimonio', m_n_path %>

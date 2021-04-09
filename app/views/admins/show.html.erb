@@ -1,0 +1,36 @@
+<% if @marriage %>
+    <%# /// show de matrimonio seleccionado/////// %>
+
+    <%= form_with(url: a_u_path(id: @marriage.id), model: @marriage, remote: true, method: :patch) do |m| %>
+        <%# ////ciclo recorre atributos de la instancia para obtener atributos////// %>
+        <% @marriage.attributes.each do |attr_name, attr_value| %> 
+            <% unless attr_name == "id" || attr_name == "created_at" || attr_name == "updated_at" || attr_name == "password_digest" %>
+                <%= m.label attr_name %>
+                <%= m.text_field attr_name, value: attr_value %> <br>
+                <br>
+            <% end %>
+        <% end %>
+        <%= m.submit 'editar' %>
+	<% end %>
+    <%= link_to 'eliminar', a_d_path(@marriage.id), method: :delete, data: {confirm: 'seguro que lo quieres borrar?'} %>
+
+<% elsif @invited %>
+    <%# ///// show de invitado seleccionado ////////////// %>
+
+    <%= form_with(url: a_u_path(id: @invited.id), model: @invited, remote: true, method: :patch) do |m| %>
+        <%# ////ciclo recorre atributos de la instancia para obtener atributos y sus valores////// %>
+        <% @invited.attributes.each do |attr_name, attr_value| %> 
+            <% unless attr_name == "id" || attr_name == "created_at" || attr_name == "updated_at" || attr_name == "password_digest" %>
+                <%= m.label attr_name %>
+                <%= m.text_field attr_name, value: attr_value %> <br>
+                <br>
+            <% end %>
+        <% end %>
+        <%= m.submit 'editar' %>
+	<% end %>
+    <%= link_to 'eliminar', i_d_path(@invited.id), method: :delete, data: {confirm: 'seguro que lo quieres borrar?'} %>
+
+
+
+<% end %>
+
