@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'marriages/index', to: 'marriages#index', as: 'm_i'
 
   # rutas para inicio y fin de sesion
-  get 'sessions/new', to: 'sessions#new', as: 's_n'
+  root 'sessions#new'
   post 'sessions/create', to: 'sessions#create', as: 's_c'
   delete 'sessions/destroy', to: 'sessions#destroy', as: 's_d'
 

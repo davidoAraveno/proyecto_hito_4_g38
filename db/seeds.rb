@@ -25,7 +25,7 @@ Marriage.create(
             link_gift: "https://club.noviosparis.cl/home/couple-catalog/18156652",
             code_gift: "73403492",
             enterprise_gift: "paris",
-            password: "jk45003"
+            password_digest: "jk45003"
         }
     ]
 )
@@ -37,7 +37,7 @@ Invited.create(
             last_name: "pernele",
             phone: "+569876345",
             email: "madrazgo@mail.com",
-            code: "t993jk3"
+            password_digest: "t993jk3"
         }
     ]
 )

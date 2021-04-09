@@ -1,2 +1,22 @@
-<h1>Sessions#new</h1>
-<p>Find me in app/views/sessions/new.html.erb</p>
+<%# AVISO EN CASO DE QUE LA CONTRASEÑA DE NOVIOS SEA INCORRECTA %>
+<% if params[:error_autenticacion] == "novios" %>
+    <h3 style="color:red;"> La contraseña es incorrecta. Porfavor vuelve a intentarlo </h3>
+<% end %>
+
+<%# AVISO EN CASO DE QUE LA CONTRASEÑA DE INVITADO SEA INCORRECTA %>
+<% if params[:error_autenticacion] == "invitado" %>
+    <h3 style="color:red;"> El codigo es incorrecto. Porfavor vuelva a intentarlo </h3>
+<% end %>
+
+<%# FORMULARIO DE INICIO DE SESION PARA NOVIOS %>
+<%= form_with(url: s_c_path, model: @marriage, local: true) do |f| %>
+    <%= f.password_field :password, placeholder: 'password' %>
+    <%= f.submit 'entrar' %>
+<% end %>
+<br>
+
+<%# FORMULARIO DE INICIO DE SESION PARA INVITADO %>
+<%= form_with(url: s_c_path, model: @invited, local: true) do |f| %>
+    <%= f.text_field :password, placeholder: 'ingrese su codigo' %>
+    <%= f.submit 'entrar' %>
+<% end %>
