@@ -24,14 +24,18 @@ class InvitedsController < ApplicationController
   def destroy
     @invited = Invited.find(params[:id])
     @invited.destroy
-    redirect_to a_i_path
+    if session[:admin]
+      redirect_to a_i_path
+    elsif session[:marriage]
+      redirect_to m_s_path(producto: 'lista-invitados')
+    end
   end
 
   private
 
   # si el usuario no es invitado ni administrador que no pueda entrar
   def authenticate
-    if !session[:invited] && !session[:admin]
+    if !session[:invited] && !session[:admin] && !session[:marriage]
       redirect_to root_path
     end
   end

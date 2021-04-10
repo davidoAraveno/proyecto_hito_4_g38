@@ -30,6 +30,7 @@
             <h4> Lista de invitados </h4>
             <% @inviteds_marriage.each do |invited| %>
                 <p> nombre: <%= invited.invited.name %> || apellido: <%= invited.invited.last_name %> || fono: <%= invited.invited.phone %> || email: <%= invited.invited.email %> || codigo: <%= invited.invited.password_digest %>  </p>
+                <%= link_to 'eliminar', i_d_path(invited.invited.id), method: :delete %>
             <% end %>
         </div>
     </div>
