@@ -4,11 +4,35 @@
     <%= link_to 'volver al inicio', m_i_path %>
 <% end %>
 
-<div style="display: flex, justify-content: space-around; align-items: center; width: 100vw; height: 100vh;">
+<% if params[:confirmacion] %>
+    <script>
+        alert("la reserva a sido echa con exito. Nos comunicaremos a la brevedad por medio del fono y mail que nos entregaron")
+    </script>
+<% end %>
+
+
+<div style="display: flex; justify-content: space-around">
     <div>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/z3kceCmSivs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/z3kceCmSivs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/tydW2UuEeWY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
     </div>
     <div>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/tydW2UuEeWY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h2> Pack novios </h2>
+        <p> 
+            crea tu parte digital en simples pasos. <br>
+            Elije una plantilla prediseñada,<br>
+            crea tu lista de invitados dentro <br>
+            de la plataforma y enviales la invitacion.<br>
+            Les llegara a su mail y su whatsapp de forma <br>
+            automatica.
+        </p>
+        <%= link_to 'reservar', r_n_path, remote: true %>
+        <div id="formulario_reservacion"> 
+
+        </div>
     </div>
 </div>

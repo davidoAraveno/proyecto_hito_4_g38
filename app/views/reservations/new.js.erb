@@ -1,0 +1,31 @@
+var formulario_reservacion = document.getElementById("formulario_reservacion");
+formulario_reservacion.innerHTML = `
+    <h3> Ingresa tus datos junto los de tu pareja para hacer la reserva </h3>
+    <%= form_with(url: r_c_path, model: @reservation, local: true, data: {confirm: '¿seguro que los datos estan correctos?'}) do |f| %>
+        <div>
+            <%= f.label 'novio1'%>
+            <%= f.text_field :name1 %>
+        </div>
+        <div>
+            <%= f.label 'novio2'%>
+            <%= f.text_field :name2 %>
+        </div>
+        <div>
+            <%= f.label 'email novio 1'%>
+            <%= f.text_field :email_name1 %>
+        </div>
+        <div>
+            <%= f.label 'email novio 2'%>
+            <%= f.text_field :email_name2 %>
+        </div>
+        <div>
+            <%= f.label 'fono novio 1'%>
+            <%= f.text_field :phone_name1 %>
+        </div>
+        <div>
+            <%= f.label 'fono novio 2'%>
+            <%= f.text_field :phone_name2 %>
+        </div>
+        <%= f.submit 'hacer reserva' %>
+    <% end %>
+`

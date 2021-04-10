@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  #rutas reservaciones
+  get 'reservations/new', to: 'reservations#new', as: 'r_n'
+  post 'reservations/create', to: 'reservations#create', as: 'r_c'
+
   #rutas calificaciones estrellas
   get 'stars/new', to: 'stars#new', as: 's_n'
   post 'stars/create', to: 'stars#create', as: 'stars_c'
