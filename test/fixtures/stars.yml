@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  calification: 1
+  message: MyString
+  marriage: one
+
+two:
+  calification: 1
+  message: MyString
+  marriage: two

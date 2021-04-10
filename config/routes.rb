@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  #rutas calificaciones estrellas
+  get 'stars/new', to: 'stars#new', as: 's_n'
+  post 'stars/create', to: 'stars#create', as: 'stars_c'
+
   #rutas para celebraciones
   patch 'celebrations/update', to: 'celebrations#update', as: 'celebration_u'
 

@@ -1,0 +1,13 @@
+var calificaciones_listas = document.getElementById("calificaciones_listas");
+calificaciones_listas.innerHTML += `
+    <br>
+    <h4>calificacion de: <%= @star.marriage.name1 %> y <%= @star.marriage.name2 %> </h4>
+    <div style="display: flex">
+        <% @star.calification.times do %>
+            <div style="width:100px; height: 100px; background: url(https://static3.depositphotos.com/1001003/122/i/600/depositphotos_1222210-stock-photo-3d-golden-star.jpg); background-position: center; background-size: cover">
+            </div>
+        <% end %>
+    </div>
+    <p> comentario: <%= @star.message %> </p>
+`
+alert("gracias por tu calificacion puedes revisarla al final de la lista")

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_09_012855) do
+ActiveRecord::Schema.define(version: 2021_04_10_011813) do
 
   create_table "admins", force: :cascade do |t|
     t.string "name"
@@ -73,6 +73,15 @@ ActiveRecord::Schema.define(version: 2021_04_09_012855) do
     t.string "code_gift"
     t.string "enterprise_gift"
     t.string "password_digest"
+  end
+
+  create_table "stars", force: :cascade do |t|
+    t.integer "calification"
+    t.string "message"
+    t.integer "marriage_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["marriage_id"], name: "index_stars_on_marriage_id"
   end
 
   create_table "template_invitations", force: :cascade do |t|

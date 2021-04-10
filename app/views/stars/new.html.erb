@@ -1,0 +1,34 @@
+<%= link_to 'volver al inicio', m_i_path %>
+<h3> califica nuestro servicio </h3>
+
+
+<%= form_with(url: stars_c_path, model: @star, remote: true) do |f| %>
+    <div>
+        <%= f.label 'cuantas estrellas le das al servicio?'%>
+        <%= f.select :calification, raw("<option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>")%>
+    </div>
+    <br>
+    <div>
+        <%= f.label 'escribe tu parecer sobre el servicio'%>
+        <%= f.text_area :message %>
+    </div>
+    <%= f.submit 'calificar'%>
+<% end %>
+<br>
+
+<%# ////// lista de calificaciones echas/////// %>
+<h2> Calificaciones </h2>
+<div id="calificaciones_listas">
+    <% @stars.each do |i| %>
+        <br>
+        <h4> Matrimonio: <%= i.marriage.name1%> y <%= i.marriage.name2 %> </h4>
+        <div style="display: flex;">
+            <%# /// el numero de calificacion es la cantidad de veces que se repetira la estrella//// %>
+            <% i.calification.times do %>
+                <div style="width:100px; height: 100px; background: url(https://static3.depositphotos.com/1001003/122/i/600/depositphotos_1222210-stock-photo-3d-golden-star.jpg); background-position: center; background-size: cover">
+                </div>
+            <% end %>
+        </div>
+        <p> comentario: <%= i.message %> </p>
+    <% end %>
+</div>

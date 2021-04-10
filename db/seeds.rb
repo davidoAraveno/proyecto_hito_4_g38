@@ -6,12 +6,14 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Star.destroy_all
 MarriageInvited.destroy_all
 Celebration.destroy_all
 Ceremony.destroy_all
 TemplateInvitation.destroy_all
 Marriage.destroy_all
 Invited.destroy_all
+
 
 Marriage.create(
     [
