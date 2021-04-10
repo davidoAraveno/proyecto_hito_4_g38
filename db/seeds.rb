@@ -13,6 +13,7 @@ Ceremony.destroy_all
 TemplateInvitation.destroy_all
 Marriage.destroy_all
 Invited.destroy_all
+Admin.destroy_all
 
 
 Marriage.create(
@@ -111,6 +112,15 @@ Tutorial.create(
         {
             name: "video de prueba 2",
             url: "https://www.youtube.com/watch?v=z3kceCmSivs"
+        }
+    ]
+)
+
+Admin.create(
+    [
+        {
+            name: 'david',
+            password_digest: 'david'
         }
     ]
 )
