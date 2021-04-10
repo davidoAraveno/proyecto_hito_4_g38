@@ -1,6 +1,7 @@
 var edit_info = document.getElementById("edit_info");
 edit_info.innerHTML ="";
 edit_info.innerHTML =`
+<h4> Informacion personal de los novios </h4>
 <%= form_with(url: m_u_path(id: @marriage.id), model: @marriage, remote: true, method: :patch) do |f| %>
     <% @marriage.attributes.each do |attr_name, attr_value|%>
         <% unless attr_name == "id" || attr_name == "created_at" || attr_name == "updated_at" || attr_name == "password_digest" %>

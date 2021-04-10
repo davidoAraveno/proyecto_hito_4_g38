@@ -3,6 +3,8 @@ class MarriagesController < ApplicationController
 
   def index
     @marriage = Marriage.find(session[:marriage])
+    @ceremony = Ceremony.find_by(marriage_id: session[:marriage])
+    @celebration = Celebration.find_by(marriage_id: session[:marriage])
   end
 
   def show
@@ -23,6 +25,8 @@ class MarriagesController < ApplicationController
   def create
     @marriage = Marriage.new(marriage_params)
     @marriage.save
+    Ceremony.create(marriage_id: @marriage.id)
+    Celebration.create(marriage_id: @marriage.id)
     redirect_to a_i_path
   end
 
@@ -44,7 +48,7 @@ class MarriagesController < ApplicationController
   end
 
   def marriage_params
-    params.require(:marriage).permit(:name1, :name2, :phone_name1, :phone_name2, :email_name1, :email_name2, :link_gift, :code_gift, :enterprise_gift)
+    params.require(:marriage).permit(:name1, :name2, :phone_name1, :phone_name2, :email_name1, :email_name2, :link_gift, :code_gift, :enterprise_gift, :password_digest)
   end
 
 end

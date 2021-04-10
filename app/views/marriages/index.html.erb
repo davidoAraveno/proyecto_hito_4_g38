@@ -1,17 +1,49 @@
+<%# ///datos del usuario en el index de matrimonios/// %>
 <h3> Estos son sus datos en caso que quiera editarlos </h3>
-<div id="edit_info">
-    <%= form_with(url: m_u_path(id: @marriage.id), model: @marriage, remote: true, method: :patch) do |f| %>
-        <%# ////ciclo que recorre los atributos de la instancia del usuario activo////// %>
-        <% @marriage.attributes.each do |attr_name, attr_value|%>
-            <% unless attr_name == "id" || attr_name == "created_at" || attr_name == "updated_at" || attr_name == "password_digest" %>
-                <div>
-                    <%= f.label attr_name %>
-                    <%= f.text_field attr_name %>
-                </div>
+<div style="display: flex; justify-content: space-around;">
+    <div id="edit_info">
+        <h4> Informacion personal de los novios </h4>
+        <%= form_with(url: m_u_path(id: @marriage.id), model: @marriage, remote: true, method: :patch) do |f| %>
+            <%# ////ciclo que recorre los atributos de la instancia del usuario activo para que pueda editarlos////// %>
+            <% @marriage.attributes.each do |attr_name, attr_value|%>
+                <% unless attr_name == "id" || attr_name == "created_at" || attr_name == "updated_at" || attr_name == "password_digest" %>
+                    <div>
+                        <%= f.label attr_name %>
+                        <%= f.text_field attr_name %>
+                    </div>
+                <% end %>
             <% end %>
+            <div><%= f.submit 'editar' %></div>
         <% end %>
-        <div><%= f.submit 'editar' %></div>
-    <% end %>
+    </div>
+    <div id="edit_info_ceremonia">
+        <h4> Informacion de la ceremonia </h4>
+        <%= form_with(url: c_u_path(id: @ceremony.id), model: @ceremony, remote: true, method: :patch) do |c| %>
+            <% @ceremony.attributes.each do |attr_name, attr_value| %>
+                <% unless attr_name == 'id' || attr_name == 'marriage_id' || attr_name == 'created_at' || attr_name == 'updated_at' %>
+                    <div>
+                        <%= c.label attr_name %>
+                        <%= c.text_field attr_name %>
+                    </div>
+                <% end %>
+            <% end %>
+            <%= c.submit 'editar' %>
+        <% end %>
+    </div>
+    <div id="edit_info_celebracion">
+        <h4> informacion de la celebracion </h4>
+        <%= form_with(url: celebration_u_path(id: @celebration.id), model: @celebration, remote: true) do |c| %>
+            <% @celebration.attributes.each do |attr_name, attr_value| %>
+                <% unless attr_name == 'id' || attr_name == 'marriage_id' || attr_name == 'created_at' || attr_name == 'updated_at' %>
+                    <div>
+                        <%= c.label attr_name %>
+                        <%= c.text_field attr_name %>
+                    </div>
+                <% end %>
+            <% end %>
+            <%= c.submit 'editar' %>
+        <% end %>
+    </div>
 </div>
 
 <%# ///////////lista de productos contratados////////////////////
@@ -28,8 +60,9 @@ no tengo como hacer que la lista este separada de los productos entregados, soli
             <p> producto2: crear invitaciones </p>
         </div>
     </a>
-    <a href="#">
+    <a href="<%= t_i_path %>">
         <div id="tutorial" class="producto_contratado">
+            tutoriales
         </div>
     </a>
 </div>

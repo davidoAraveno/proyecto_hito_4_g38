@@ -7,7 +7,7 @@
     <div style="display: flex, justify-content: space-around">
         <div>
             <%= form_with(url: i_c_path, model: @invited, remote: true) do |f| %>
-
+                <%# ///ciclo que recorre una instancia de un invitado para crear un formulario creador de invitados//// %>
                 <% @invited.attributes.each do |attr_name, attr_value| %>
                     <% unless attr_name == "created_at" || attr_name == "updated_at" || attr_name == "id"%>
 
@@ -29,7 +29,7 @@
         <div id="lista_invitados_matrimonio">
             <h4> Lista de invitados </h4>
             <% @inviteds_marriage.each do |invited| %>
-                <p> <%= invited.invited.name %> </p>
+                <p> nombre: <%= invited.invited.name %> || apellido: <%= invited.invited.last_name %> || fono: <%= invited.invited.phone %> || email: <%= invited.invited.email %> || codigo: <%= invited.invited.password_digest %>  </p>
             <% end %>
         </div>
     </div>
@@ -49,10 +49,16 @@
         <h4> Haz adquirido esta postal </h4>
         <img src="<%= @invitation_active.image %>">
         <p> Pertenece a: <%= @invitation_active.marriage.name1 %> y <%= @invitation_active.marriage.name2 %> </p>
-        <%= form_with(url: i_u_path(template: @invitation_active.id), local:true, method: :patch) do |f| %>
-            <%= f.label 'crea un texto personalizado para la invitacion' %>
-            <%=f.text_area :message_personalized %>
-            <%= f.submit "asignar texto" %>
+        <% if @invitation_active.message_personalized == nil %>
+            <%= form_with(url: i_u_path(template: @invitation_active.id), local:true, method: :patch) do |f| %>
+                <%= f.label 'crea un texto personalizado para la invitacion' %>
+                <%=f.text_area :message_personalized %>
+                <%= f.submit "asignar texto" %>
+            <% end %>
+        <% else %>
+            <p> mensaje personalizado: <%= @invitation_active.message_personalized %> </p>
         <% end %>
     <% end %>
 <% end %>
+<br>
+<%= link_to 'volver al inicio', m_i_path %>

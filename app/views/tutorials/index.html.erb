@@ -1,0 +1,14 @@
+<% if !session %>
+    <%= link_to 'volver al inicio', root_path %>
+<% else %>
+    <%= link_to 'volver al inicio', m_i_path %>
+<% end %>
+
+<div style="display: flex, justify-content: space-around; align-items: center; width: 100vw; height: 100vh;">
+    <div>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/z3kceCmSivs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/tydW2UuEeWY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+</div>

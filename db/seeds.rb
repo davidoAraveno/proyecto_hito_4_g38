@@ -99,3 +99,16 @@ TemplateInvitation.create(
         }
     ]
 )
+
+Tutorial.create(
+    [
+        {
+            name: "video de prueba 1",
+            url: "https://www.youtube.com/watch?v=tydW2UuEeWY"
+        },
+        {
+            name: "video de prueba 2",
+            url: "https://www.youtube.com/watch?v=z3kceCmSivs"
+        }
+    ]
+)

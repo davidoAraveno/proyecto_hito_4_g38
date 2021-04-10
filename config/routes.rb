@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
-  
+  #rutas para celebraciones
+  patch 'celebrations/update', to: 'celebrations#update', as: 'celebration_u'
+
+  #rutas para ceremonias
+  patch 'ceremonies/update', to: 'ceremonies#update', as: 'c_u'
+
+  #rutas para tutoriales
+  get 'tutorials/index', to: 'tutorials#index', as:'t_i'
+
   #rutas invitaciones para invitados
   patch 'invitations/update', to: 'invitations#update', as: 'i_u'
 

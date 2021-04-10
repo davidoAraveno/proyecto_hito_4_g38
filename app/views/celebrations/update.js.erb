@@ -1,0 +1,16 @@
+var edit_info_celebracion = document.getElementById("edit_info_celebracion");
+edit_info_celebracion.innerHTML = `
+    <h4> informacion de la celebracion </h4>
+        <%= form_with(url: celebration_u_path(id: @celebration.id), model: @celebration, remote: true) do |c| %>
+            <% @celebration.attributes.each do |attr_name, attr_value| %>
+                <% unless attr_name == 'id' || attr_name == 'marriage_id' || attr_name == 'created_at' || attr_name == 'updated_at' %>
+                    <div>
+                        <%= c.label attr_name %>
+                        <%= c.text_field attr_name %>
+                    </div>
+                <% end %>
+            <% end %>
+            <%= c.submit 'editar' %>
+        <% end %>
+`
+alert("informacion actualizada")
