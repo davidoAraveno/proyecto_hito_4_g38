@@ -9,6 +9,13 @@
     <h3 style="color:red;"> El codigo de invitado es incorrecto. Porfavor vuelva a intentarlo </h3>
 <% end %>
 
+<%# AVISO DE EXITO DE COMPRA REALIZADA %>
+<% if params[:estado] == 'compra lista'%>
+    <script>
+        alert('compra realizada con exito. Nos comunicaremos con usted a la brevedad')
+    </script>
+<% end %>
+
 <div style="display: flex; justify-content: space-around; align-items: center; width: 100vw; height:100vh;">
     <div>
         <%# FORMULARIO DE INICIO DE SESION PARA NOVIOS %>

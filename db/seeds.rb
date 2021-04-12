@@ -124,3 +124,10 @@ Admin.create(
         }
     ]
 )
+
+PaymentMethod.create(name: 'PayPal Express Checkout', code: 'PEC')
+
+Marriage.all.each do |i|
+    Order.create(marriage_id: i.id, total: 60.000, payed: false)
+    break
+end

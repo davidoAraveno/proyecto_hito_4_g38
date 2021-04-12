@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+
+  #rutas paypal
+  post 'reservation_items/pay_with_paypal', to: 'reservation_items#pay_with_paypal', as: 'pay_with_paypal_reservation_items'
+  get 'reservation_items/process_paypal_payment', to: 'reservation_items#process_paypal_payment', as: 'process_paypal_payment_reservation_items'
+
+
   #rutas reservaciones
   get 'reservations/new', to: 'reservations#new', as: 'r_n'
   post 'reservations/create', to: 'reservations#create', as: 'r_c'

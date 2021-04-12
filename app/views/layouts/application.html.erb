@@ -10,6 +10,7 @@
   </head>
 
   <body>
+    <%= notice %>
     <% if session[:marriage] || session[:invited] || session[:admin] %>
       <%= link_to 'cerrar sesion',s_d_path, method: :delete %>
     <% end %>

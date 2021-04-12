@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_10_030223) do
+ActiveRecord::Schema.define(version: 2021_04_12_003448) do
 
   create_table "admins", force: :cascade do |t|
     t.string "name"
@@ -75,6 +75,25 @@ ActiveRecord::Schema.define(version: 2021_04_10_030223) do
     t.string "password_digest"
   end
 
+  create_table "payment_methods", force: :cascade do |t|
+    t.string "name"
+    t.string "code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.integer "reservation_id"
+    t.integer "payment_method_id"
+    t.string "state"
+    t.decimal "total"
+    t.string "token"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["payment_method_id"], name: "index_payments_on_payment_method_id"
+    t.index ["reservation_id"], name: "index_payments_on_reservation_id"
+  end
+
   create_table "reservations", force: :cascade do |t|
     t.string "name1"
     t.string "name2"
@@ -84,6 +103,8 @@ ActiveRecord::Schema.define(version: 2021_04_10_030223) do
     t.string "phone_name2"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "total", default: 60.0
+    t.boolean "payed", default: false
   end
 
   create_table "stars", force: :cascade do |t|

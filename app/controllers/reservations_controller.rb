@@ -8,8 +8,11 @@ class ReservationsController < ApplicationController
 
   def create
     @reservation = Reservation.new(reservation_params)
-    @reservation.save
-    redirect_to t_i_path(confirmacion: true)
+    if @reservation.save
+      redirect_to t_i_path(reservation_id: @reservation.id)
+    else
+      redirect_to t_i_path(error: 'faltan datos')
+    end
   end
 
   private

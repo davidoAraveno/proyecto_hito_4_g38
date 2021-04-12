@@ -1,7 +1,7 @@
 var formulario_reservacion = document.getElementById("formulario_reservacion");
 formulario_reservacion.innerHTML = `
     <h3> Ingresa tus datos junto los de tu pareja para hacer la reserva </h3>
-    <%= form_with(url: r_c_path, model: @reservation, local: true, data: {confirm: '¿seguro que los datos estan correctos?'}) do |f| %>
+    <%= form_with(url: r_c_path, model: @reservation, local: true, data: {confirm: '¿seguro que los datos estan correctos? Revisalos antes de hacer click en aceptar'}) do |f| %>
         <div>
             <%= f.label 'novio1'%>
             <%= f.text_field :name1 %>

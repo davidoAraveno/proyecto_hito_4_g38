@@ -1,38 +1,53 @@
 <% if !session %>
+    <%# link que hace que un usuario sin sesion vuelva al inicio de sesion de la pagina %>
     <%= link_to 'volver al inicio', root_path %>
 <% else %>
+    <%# link que hace que un usuario registrado vuelva al inicio de los usuarios que estan organizando su matrimonio %>
     <%= link_to 'volver al inicio', m_i_path %>
 <% end %>
 
-<% if params[:confirmacion] %>
+
+<% if params[:reservation_id] %>
     <script>
         alert("la reserva a sido echa con exito. Nos comunicaremos a la brevedad por medio del fono y mail que nos entregaron")
     </script>
+
+    <h4> Ahora haga click en pagar </h4>
+    <%= link_to 'pagar con paypal', pay_with_paypal_reservation_items_path(reservation_id: params[:reservation_id]), method: :post %>
+
+<% else %>
+
+    <div style="display: flex; justify-content: space-around">
+        <div>
+            <div>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/z3kceCmSivs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/tydW2UuEeWY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+        <div>
+            <h2> Pack novios </h2>
+            <p> 
+                crea tu parte digital en simples pasos. <br>
+                Elije una plantilla prediseñada,<br>
+                crea tu lista de invitados dentro <br>
+                de la plataforma y enviales la invitacion.<br>
+                Les llegara a su mail y su whatsapp de forma <br>
+                automatica.
+            </p>
+            <%= link_to 'reservar', r_n_path, remote: true %>
+            <div id="formulario_reservacion"> 
+
+            </div>
+        </div>
+    </div>
 <% end %>
 
 
-<div style="display: flex; justify-content: space-around">
-    <div>
-        <div>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/z3kceCmSivs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-        <div>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/tydW2UuEeWY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-    </div>
-    <div>
-        <h2> Pack novios </h2>
-        <p> 
-            crea tu parte digital en simples pasos. <br>
-            Elije una plantilla prediseñada,<br>
-            crea tu lista de invitados dentro <br>
-            de la plataforma y enviales la invitacion.<br>
-            Les llegara a su mail y su whatsapp de forma <br>
-            automatica.
-        </p>
-        <%= link_to 'reservar', r_n_path, remote: true %>
-        <div id="formulario_reservacion"> 
-
-        </div>
-    </div>
-</div>
+<%# mensaje que aparecera cuando el usuario no ingrese todos los datos en el formulario %>
+<% if params[:error] == 'faltan datos' %>
+    <script>
+        alert('no ingresaste todos los datos en el formulario. Deben existir todos para que la compra no tenga problemas. Porfavor vuelve a intentarlo')
+    </script>
+<% end %>
