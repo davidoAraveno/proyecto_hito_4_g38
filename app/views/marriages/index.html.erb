@@ -46,6 +46,16 @@
     </div>
 </div>
 
+<%# DASHBOARD GRAFICOS INVITADOS CONFIRMADOS, NO CONFIRMADOS Y DIAS QUE FALTAN PARA CASARSE %>
+<div style="display: flex; justify-content: space-between">
+    <div>
+        <%= column_chart @datos, colors:['#FF3456'], messages:{empty: 'no hay invitados agregados'} %>
+    </div>
+    <div>
+        <%= bar_chart 'dias que faltan para casarse': @dias %>
+    </div>
+</div>
+
 <%# ///////////lista de productos contratados////////////////////
 no tengo como hacer que la lista este separada de los productos entregados, solicitados y por entregar. Ya que en mi aplicacion, un matrimonio contrata el servicio y adquiere el derecho a poder hacer una lista de invitados y crear las invitaciones para ellos %>
 

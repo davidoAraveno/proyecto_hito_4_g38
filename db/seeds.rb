@@ -45,18 +45,6 @@ Marriage.create(
     ]
 )
 
-Invited.create(
-    [
-        {
-            name:"madrazgo",
-            last_name: "pernele",
-            phone: "+569876345",
-            email: "madrazgo@mail.com",
-            password_digest: "t993jk3"
-        }
-    ]
-)
-
 Marriage.all.each do |m|
     Invited.all.each do |i|
         MarriageInvited.create(
@@ -126,8 +114,3 @@ Admin.create(
 )
 
 PaymentMethod.create(name: 'PayPal Express Checkout', code: 'PEC')
-
-Marriage.all.each do |i|
-    Order.create(marriage_id: i.id, total: 60.000, payed: false)
-    break
-end

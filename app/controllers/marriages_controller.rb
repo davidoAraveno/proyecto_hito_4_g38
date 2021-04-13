@@ -5,6 +5,15 @@ class MarriagesController < ApplicationController
     @marriage = Marriage.find(session[:marriage])
     @ceremony = Ceremony.find_by(marriage_id: session[:marriage])
     @celebration = Celebration.find_by(marriage_id: session[:marriage])
+
+    # GRAFICO DE INVITADOS QUE HAN CONFIRMADO Y LOS QUE NO LO HAN ECHO
+    @invitados_confirmados = Marriage.find(session[:marriage]).marriage_inviteds.where(invited_confirm: false)
+    @invitadosnoconfirmados = Marriage.find(session[:marriage]).marriage_inviteds.where(invited_confirm: true)
+    @datos = [['invitados no confirmados', @invitados_confirmados.size],['invitados confirmados', @invitadosnoconfirmados.size]]
+
+    #GRAFICO DE DIAS QUE FALTAN PARA CASARSE
+    @ceremony_date = Marriage.find(session[:marriage]).ceremony.date
+    @dias = [[(Date.parse(@ceremony_date) - Date.today).to_i]]
   end
 
   def show
