@@ -13,6 +13,7 @@ class SessionsController < ApplicationController
       )
       if @marriage
         session[:marriage] = @marriage.id
+
         redirect_to m_i_path
       else
         redirect_to root_path(error_autenticacion: 'novios')

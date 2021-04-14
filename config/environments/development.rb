@@ -45,6 +45,16 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
+
+
+  config.action_mailer.delivery_method = :mailgun
+  config.action_mailer.mailgun_settings = {
+    api_key: 'KEY_MAILGUN',
+    domain: 'sandbox15447205526e42d8aaeb52ad32ca95f7.mailgun.org',
+  }
+
+
+
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
