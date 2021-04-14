@@ -33,6 +33,8 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'activemerchant'
 
+gem 'pg'
+
 gem 'mailgun-ruby', '~>1.2.4'
 
 # Use ActiveStorage variant

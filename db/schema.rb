@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2021_04_12_003448) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "admins", force: :cascade do |t|
     t.string "name"
     t.string "password_digest"
@@ -23,7 +26,7 @@ ActiveRecord::Schema.define(version: 2021_04_12_003448) do
     t.string "address"
     t.string "hour"
     t.string "date"
-    t.integer "marriage_id"
+    t.bigint "marriage_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["marriage_id"], name: "index_celebrations_on_marriage_id"
@@ -33,7 +36,7 @@ ActiveRecord::Schema.define(version: 2021_04_12_003448) do
     t.string "address"
     t.string "hour"
     t.string "date"
-    t.integer "marriage_id"
+    t.bigint "marriage_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["marriage_id"], name: "index_ceremonies_on_marriage_id"
@@ -50,8 +53,8 @@ ActiveRecord::Schema.define(version: 2021_04_12_003448) do
   end
 
   create_table "marriage_inviteds", force: :cascade do |t|
-    t.integer "marriage_id"
-    t.integer "invited_id"
+    t.bigint "marriage_id"
+    t.bigint "invited_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "invited_confirm", default: false
@@ -83,8 +86,8 @@ ActiveRecord::Schema.define(version: 2021_04_12_003448) do
   end
 
   create_table "payments", force: :cascade do |t|
-    t.integer "reservation_id"
-    t.integer "payment_method_id"
+    t.bigint "reservation_id"
+    t.bigint "payment_method_id"
     t.string "state"
     t.decimal "total"
     t.string "token"
@@ -110,7 +113,7 @@ ActiveRecord::Schema.define(version: 2021_04_12_003448) do
   create_table "stars", force: :cascade do |t|
     t.integer "calification"
     t.string "message"
-    t.integer "marriage_id"
+    t.bigint "marriage_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["marriage_id"], name: "index_stars_on_marriage_id"
@@ -118,7 +121,7 @@ ActiveRecord::Schema.define(version: 2021_04_12_003448) do
 
   create_table "template_invitations", force: :cascade do |t|
     t.string "image"
-    t.integer "marriage_id"
+    t.bigint "marriage_id"
     t.string "message_personalized"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -132,4 +135,12 @@ ActiveRecord::Schema.define(version: 2021_04_12_003448) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "celebrations", "marriages"
+  add_foreign_key "ceremonies", "marriages"
+  add_foreign_key "marriage_inviteds", "inviteds"
+  add_foreign_key "marriage_inviteds", "marriages"
+  add_foreign_key "payments", "payment_methods"
+  add_foreign_key "payments", "reservations"
+  add_foreign_key "stars", "marriages"
+  add_foreign_key "template_invitations", "marriages"
 end
