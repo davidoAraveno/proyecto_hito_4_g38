@@ -13,7 +13,9 @@ class MarriagesController < ApplicationController
 
     #GRAFICO DE DIAS QUE FALTAN PARA CASARSE
     @ceremony_date = Marriage.find(session[:marriage]).ceremony.date
-    @dias = [[(Date.parse(@ceremony_date) - Date.today).to_i]]
+    if @ceremony_date
+      @dias = [[(Date.parse(@ceremony_date) - Date.today).to_i]]
+    end
   end
 
   def show

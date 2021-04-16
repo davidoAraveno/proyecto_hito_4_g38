@@ -12,7 +12,7 @@
   <body>
     <%= notice %>
 
-    <% if session[:marriage] || session[:invited] || session[:admin] %>
+    <% if session[:marriage] || session[:admin] %>
       <div style="display: flex; justify-content: space-between; height: 5vh; background: #CCCCCC; padding: 0 1rem;" >
         <a href="<%= m_s_path(producto: 'lista-invitados') %>">
             Lista de invitados
@@ -26,6 +26,9 @@
         <a href="<%= s_n_path %>">
             Califica el servicio
         </a>
+        <div style="background: #CCCCCC">
+        <%= link_to 'cerrar sesion',s_d_path, method: :delete %>
+      </div>
       </div>
     <% end %>
 
@@ -34,11 +37,6 @@
       <%= yield %>
     </div>
 
-    <% if session[:marriage] || session[:invited] || session[:admin] %>
-      <div style="height: 5vh">
-        <%= link_to 'cerrar sesion',s_d_path, method: :delete %>
-      </div>
-    <% end %>
   
   </body>
 </html>
