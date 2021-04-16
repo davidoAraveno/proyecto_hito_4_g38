@@ -11,10 +11,34 @@
 
   <body>
     <%= notice %>
+
     <% if session[:marriage] || session[:invited] || session[:admin] %>
-      <%= link_to 'cerrar sesion',s_d_path, method: :delete %>
+      <div style="display: flex; justify-content: space-between; height: 5vh; background: #CCCCCC; padding: 0 1rem;" >
+        <a href="<%= m_s_path(producto: 'lista-invitados') %>">
+            Lista de invitados
+        </a>
+        <a href="<%= m_s_path(producto: 'invitaciones') %>">
+            <p> Parte digital (invitaciones) </p>
+        </a>
+        <a href="<%= t_i_path %>">
+                Tutoriales
+        </a>
+        <a href="<%= s_n_path %>">
+            Califica el servicio
+        </a>
+      </div>
     <% end %>
 
-    <%= yield %>
+
+    <div style="border-left: 5rem solid #DCDCDC; border-right: 5rem solid #DCDCDC">
+      <%= yield %>
+    </div>
+
+    <% if session[:marriage] || session[:invited] || session[:admin] %>
+      <div style="height: 5vh">
+        <%= link_to 'cerrar sesion',s_d_path, method: :delete %>
+      </div>
+    <% end %>
+  
   </body>
 </html>

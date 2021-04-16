@@ -17,23 +17,24 @@
 
 <% else %>
 
-    <div style="display: flex; justify-content: space-around">
-        <div>
+    <div style=" height: 85vh;">
+        <div style="display: flex; justify-content: space-around">
+            <%# ///////////// videos tutoriales ////////////////// %>
             <div>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/z3kceCmSivs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe width="460" height="215" src="https://www.youtube.com/embed/z3kceCmSivs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
             <div>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/tydW2UuEeWY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe width="460" height="215" src="https://www.youtube.com/embed/tydW2UuEeWY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
         <div>
             <h2> Pack novios </h2>
             <p> 
-                crea tu parte digital en simples pasos. <br>
-                Elije una plantilla prediseñada,<br>
-                crea tu lista de invitados dentro <br>
-                de la plataforma y enviales la invitacion.<br>
-                Les llegara a su mail y su whatsapp de forma <br>
+                crea tu parte digital en simples pasos.<br>
+                Elije una plantilla prediseñada,
+                crea tu lista de invitados dentro
+                de la plataforma y enviales la invitacion. </br>
+                Les llegara a su mail y su whatsapp de forma
                 automatica.
             </p>
             <%= link_to 'reservar', r_n_path, remote: true %>
@@ -41,7 +42,38 @@
 
             </div>
         </div>
+        <br>
+    <h2> Otros usuarios ya se decidieron. ¿y tu? </h2>
+
+    <% @califications.each do |i| %>
+
+    <div style='display: flex; border: 2px solid gray; width: 50vw; justify-content: space-between; border-radius: 7px 7px 0 0'>
+        <div>
+            <div style="background:pink; width:50px; height: 50px; ">
+            </div>
+        </div>
+        <div>
+            <%= i.marriage.name1 %> y
+            <%= i.marriage.name2 %>
+        </div>
+        <div style="display:flex">
+            <% i.calification.times do %>
+                <div style="width:30px; height: 30px; background: url(https://cdn2.iconfinder.com/data/icons/modifiers-add-on-1-flat/48/Mod_Add-On_1-34-512.png); background-position: center; background-size: cover">
+                </div>
+            <% end %>
+        </div>
     </div>
+        <div style="border: 2px solid gray; width: 50vw; border-radius: 0 0 7px 7px">
+            <%= i.message %>
+        </div>
+        <br>
+        <br>
+    <% end %>
+
+
+
+    </div>
+
 <% end %>
 
 

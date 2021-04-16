@@ -1,0 +1,27 @@
+.input-editar{
+    width: 12rem; 
+    height: 1.5rem; 
+    border-radius: 15px; 
+    border: 1px solid gray;
+    font-size: 1rem;
+    padding-left: 0.5rem;
+}
+
+.inputs-datos-editar{
+    margin: 0.4rem 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.contenedores-formularios-edit {
+    background: #E2E2E2;
+}
+
+.boton_input{
+    justify-self: flex-end
+}
+
+.div-boton-input{
+    display: flex; 
+    justify-content: flex-end;
+}

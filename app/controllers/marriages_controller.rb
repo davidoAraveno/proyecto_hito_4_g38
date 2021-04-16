@@ -36,7 +36,7 @@ class MarriagesController < ApplicationController
     @marriage.save
     Ceremony.create(marriage_id: @marriage.id)
     Celebration.create(marriage_id: @marriage.id)
-    info() #se envia mail al matrimonio
+    info(@marriage.name1, @marriage.name2, @marriage.password_digest) #se envia mail al matrimonio
     redirect_to a_i_path
   end
 

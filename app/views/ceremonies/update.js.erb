@@ -1,16 +1,21 @@
 var edit_info_eventos = document.getElementById("edit_info_ceremonia");
 edit_info_eventos.innerHTML = `
     <h4> Informacion de la ceremonia </h4>
-     <%= form_with(url: c_u_path(id: @ceremony.id) ,model: @ceremony, remote: true, method: :patch) do |c| %>
-        <% @ceremony.attributes.each do |attr_name, attr_value| %>
-            <% unless attr_name == 'id' || attr_name == 'marriage_id' || attr_name == 'created_at' || attr_name == 'updated_at' %>
-                <div>
-                    <%= c.label attr_name %>
-                    <%= c.text_field attr_name %>
-                </div>
-            <% end %>
+    <%= form_with(url: c_u_path(id: @ceremony.id), model: @ceremony, remote: true, method: :patch) do |c| %>
+            <div class="inputs-datos-editar">
+                <%= c.label 'Direccion' %>
+                <%= c.text_field :address, class: 'input-editar' %>
+            </div>
+            <div class="inputs-datos-editar">
+                <%= c.label 'Hora' %>
+                <%= c.text_field :hour, class: 'input-editar' %>
+            </div>
+            <div class="inputs-datos-editar">
+                <%= c.label 'Fecha' %>
+                <%= c.text_field :date, class: 'input-editar' %>
+            </div>
+
+            <%= c.submit 'editar', class: 'boton_input' %>
         <% end %>
-        <%= c.submit 'editar' %>
-    <% end %>
 `
 alert("informacion actualizada")

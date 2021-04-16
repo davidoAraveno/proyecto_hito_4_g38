@@ -1,34 +1,34 @@
-<%= link_to 'volver al inicio', m_i_path %>
-<h3> califica nuestro servicio </h3>
+<div style="height: 90vh; padding: 0 15rem">
+    <%= link_to 'volver al inicio', m_i_path %>
+    <h3 style="text-center"> ¿Cuantas estrellas le darias a este servicio? </h3>
 
 
-<%= form_with(url: stars_c_path, model: @star, remote: true) do |f| %>
-    <div>
-        <%= f.label 'cuantas estrellas le das al servicio?'%>
-        <%= f.select :calification, raw("<option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>")%>
-    </div>
-    <br>
-    <div>
-        <%= f.label 'escribe tu parecer sobre el servicio'%>
-        <%= f.text_area :message %>
-    </div>
-    <%= f.submit 'calificar'%>
-<% end %>
-<br>
-
-<%# ////// lista de calificaciones echas/////// %>
-<h2> Calificaciones </h2>
-<div id="calificaciones_listas">
-    <% @stars.each do |i| %>
-        <br>
-        <h4> Matrimonio: <%= i.marriage.name1%> y <%= i.marriage.name2 %> </h4>
-        <div style="display: flex;">
-            <%# /// el numero de calificacion es la cantidad de veces que se repetira la estrella//// %>
-            <% i.calification.times do %>
-                <div style="width:100px; height: 100px; background: url(https://static3.depositphotos.com/1001003/122/i/600/depositphotos_1222210-stock-photo-3d-golden-star.jpg); background-position: center; background-size: cover">
-                </div>
-            <% end %>
+    <%= form_with(url: stars_c_path, model: @star, remote: true) do |f| %>
+        <div style="border: 1px solid gray; padding: 1rem 0; border-radius: 15px 15px 0 0">
+            <%= f.label 'cuantas estrellas le das al servicio?'%>
+            <%= f.select :calification, raw("<option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>")%>
         </div>
-        <p> comentario: <%= i.message %> </p>
+        <div>
+            <%= f.text_area :message, style: 'width: 651px; height: 127px; font-size: 2rem', placeholder: 'Escribe aqui tu parecer sobre este servicio' %>
+        </div>
+        <%= f.submit 'calificar'%>
     <% end %>
+    <br>
+
+    <%# ////// lista de calificaciones echas/////// %>
+    <h2> Calificaciones </h2>
+    <div id="calificaciones_listas">
+        <% @stars.each do |i| %>
+            <br>
+            <h4> Matrimonio: <%= i.marriage.name1%> y <%= i.marriage.name2 %> </h4>
+            <div style="display: flex;">
+                <%# /// el numero de calificacion es la cantidad de veces que se repetira la estrella//// %>
+                <% i.calification.times do %>
+                    <div style="width:100px; height: 100px; background: url(https://cdn2.iconfinder.com/data/icons/modifiers-add-on-1-flat/48/Mod_Add-On_1-34-512.png); background-position: center; background-size: cover">
+                    </div>
+                <% end %>
+            </div>
+            <p> comentario: <%= i.message %> </p>
+        <% end %>
+    </div>
 </div>

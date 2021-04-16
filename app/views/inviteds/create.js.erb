@@ -1,6 +1,11 @@
 var lista_invitados_matrimonio = document.getElementById("lista_invitados_matrimonio");
 lista_invitados_matrimonio.innerHTML +=`
-    <p> nombre: <%= @invited.name %> || apellido: <%= @invited.last_name %> || fono: <%= @invited.phone %> || email: <%= @invited.email %> || codigo: <%= @invited.password_digest %>  </p>
-    <%= link_to 'eliminar', i_d_path(@invited.id), method: :delete %>
-
+    <tr>
+        <td><%= @invited.name %></td>
+        <td><%= @invited.last_name %></td>
+        <td><%= @invited.phone %></td>
+        <td> <%= @invited.email %> </td>
+        <td> <%= @invited.password_digest %> </td>
+        <td> <%= link_to 'eliminar', i_d_path(@invited.id), method: :delete %> </td>
+    </tr>
 `

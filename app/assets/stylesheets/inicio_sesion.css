@@ -1,0 +1,36 @@
+.circulos {
+    width:300px;
+    height:300px; 
+    background:green; 
+    margin:auto; 
+    border-radius: 150px;
+}
+
+.flexbox-form {
+    display:flex;
+    flex-direction: column; 
+    align-items:center; 
+    justify-content: center
+}
+
+.margin_form{
+    margin: 0.5rem 0;
+}
+
+.boton_input{
+    border: none; 
+    background: #99CCCC; 
+    padding: 0.5rem; 
+    border-radius: 15px; 
+    color: white; 
+    font-size: 1rem;
+    margin: 0.5rem;
+}
+
+.inputs-formularios{
+    width: 13rem; 
+    height: 2rem; 
+    border-radius: 15px; 
+    border: 2px solid gray;
+    font-size: 2rem;
+}

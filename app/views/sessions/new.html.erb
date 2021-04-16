@@ -1,13 +1,20 @@
-<%= link_to 'no tengo cuenta. Quiero conocer el servicio!', t_i_path %>
+<div style="height: 5vh; padding: 0.5rem 1rem 0 0">
+
+    <%= link_to 'no tengo cuenta. Quiero conocer el servicio!', t_i_path, style:'float: right; font-size: 1.3rem' %>
+    
+</div>
+
 <%# AVISO EN CASO DE QUE LA CONTRASEÑA DE NOVIOS SEA INCORRECTA %>
 <% if params[:error_autenticacion] == "novios" %>
     <h3 style="color:red;"> La contraseña de novios es incorrecta. Porfavor vuelve a intentarlo </h3>
 <% end %>
 
+
 <%# AVISO EN CASO DE QUE LA CONTRASEÑA DE INVITADO SEA INCORRECTA %>
 <% if params[:error_autenticacion] == "invitado" %>
     <h3 style="color:red;"> El codigo de invitado es incorrecto. Porfavor vuelva a intentarlo </h3>
 <% end %>
+
 
 <%# AVISO DE EXITO DE COMPRA REALIZADA %>
 <% if params[:estado] == 'compra lista'%>
@@ -16,21 +23,46 @@
     </script>
 <% end %>
 
-<div style="display: flex; justify-content: space-around; align-items: center; width: 100vw; height:100vh;">
+
+
+<div style="display: flex; justify-content: space-around; align-items: center; width:100vw; height:90vh;">
+    <%# FORMULARIO DE INICIO DE SESION PARA NOVIOS %>
     <div>
-        <%# FORMULARIO DE INICIO DE SESION PARA NOVIOS %>
-        <h3> Entrar como anfitrion (novios) </h3>
-        <%= form_with(url: s_c_path, model: @marriage, local: true) do |f| %>
-            <%= f.password_field :password, placeholder: 'password' %>
-            <%= f.submit 'entrar' %>
-        <% end %>
+        <div class="circulos"> </div>
+
+        <div>
+            <div class="flexbox-form">
+                <h3> Entrar como anfitrion (novios) </h3>
+                <%= form_with(url: s_c_path, model: @marriage, local: true) do |f| %>
+                    <div class="margin_form">
+                        <%= f.password_field :password, class: 'inputs-formularios' %>
+                    </div>
+                    <div style="text-align: center">
+                        <%= f.submit 'entrar', class: 'boton_input' %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
     </div>
+
+
     <div>
-        <h3> Entrar como invitado </h3>
         <%# FORMULARIO DE INICIO DE SESION PARA INVITADO %>
-        <%= form_with(url: s_c_path, model: @invited, local: true) do |f| %>
-            <%= f.text_field :password, placeholder: 'ingrese su codigo' %>
-            <%= f.submit 'entrar' %>
-        <% end %>
+        <div class="circulos"> </div>
+
+        <div>
+            <div class="flexbox-form">
+                <h3> Entrar como invitado </h3>
+                <%= form_with(url: s_c_path, model: @invited, local: true) do |f| %>
+                    <div class="margin_form">
+                        <%= f.password_field :password, class: 'inputs-formularios' %>
+                    </div>
+                    <div style="text-align: center">
+                        <%= f.submit 'entrar', class: 'boton_input' %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
     </div>
+
 </div>

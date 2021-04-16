@@ -1,83 +1,101 @@
-<%# ///datos del usuario en el index de matrimonios/// %>
-<h3> Estos son sus datos en caso que quiera editarlos </h3>
-<div style="display: flex; justify-content: space-around;">
-    <div id="edit_info">
-        <h4> Informacion personal de los novios </h4>
+<%# ///////////////////datos de novio 1 para editar//////////////////////////////// %>
+<h3 style="text-align: center; margin: 1.5rem 0"> Estos son sus datos en caso que quiera editarlos </h3>
+
+<div style="display: flex; justify-content: space-around; height: 27vh;">
+    <div id="edit_info" class="contenedores-formularios-edit">
+        <h4> Datos novio </h4>
         <%= form_with(url: m_u_path(id: @marriage.id), model: @marriage, remote: true, method: :patch) do |f| %>
-            <%# ////ciclo que recorre los atributos de la instancia del usuario activo para que pueda editarlos////// %>
-            <% @marriage.attributes.each do |attr_name, attr_value|%>
-                <% unless attr_name == "id" || attr_name == "created_at" || attr_name == "updated_at" || attr_name == "password_digest" %>
-                    <div>
-                        <%= f.label attr_name %>
-                        <%= f.text_field attr_name %>
-                    </div>
-                <% end %>
-            <% end %>
-            <div><%= f.submit 'editar' %></div>
+            <div class="inputs-datos-editar">
+                <%= f.label 'nombre' %>
+                <%= f.text_field :name1, class: 'input-editar' %>
+            </div>
+            <div class="inputs-datos-editar">
+                <%= f.label 'fono' %>
+                <%= f.text_field :phone_name1, class: 'input-editar' %>
+            </div>
+            <div class="inputs-datos-editar">
+                <%= f.label 'email' %>
+                <%= f.text_field :email_name1, class: 'input-editar' %>
+            </div>
+            
+            <div class="div-boton-input"><%= f.submit 'editar', class: 'boton_input' %></div>
         <% end %>
     </div>
-    <div id="edit_info_ceremonia">
+
+
+    <%# ///////////////datos de novio 2 para editar///////////////////////// %>
+    <div id="edit_info" class= 'contenedores-formularios-edit'>
+        <h4> Datos novio </h4>
+        <%= form_with(url: m_u_path(id: @marriage.id), model: @marriage, remote: true, method: :patch) do |f| %>
+            <div class="inputs-datos-editar">
+                <%= f.label 'nombre' %>
+                <%= f.text_field :name2, class: 'input-editar' %>
+            </div>
+            <div class="inputs-datos-editar">
+                <%= f.label 'fono' %>
+                <%= f.text_field :phone_name2, class: 'input-editar' %>
+            </div>
+            <div class="inputs-datos-editar">
+                <%= f.label 'email' %>
+                <%= f.text_field :email_name2, class: 'input-editar' %>
+            </div>
+            
+            <div class="div-boton-input"><%= f.submit 'editar', class: 'boton_input' %></div>
+        <% end %>
+    </div>
+
+
+    <%# ///////////datos de ceremonia para editar///////////////////////////////// %>
+    <div id="edit_info_ceremonia" class= 'contenedores-formularios-edit'>
         <h4> Informacion de la ceremonia </h4>
         <%= form_with(url: c_u_path(id: @ceremony.id), model: @ceremony, remote: true, method: :patch) do |c| %>
-            <% @ceremony.attributes.each do |attr_name, attr_value| %>
-                <% unless attr_name == 'id' || attr_name == 'marriage_id' || attr_name == 'created_at' || attr_name == 'updated_at' %>
-                    <div>
-                        <%= c.label attr_name %>
-                        <%= c.text_field attr_name %>
-                    </div>
-                <% end %>
-            <% end %>
-            <%= c.submit 'editar' %>
+            <div class="inputs-datos-editar">
+                <%= c.label 'Direccion' %>
+                <%= c.text_field :address, class: 'input-editar' %>
+            </div>
+            <div class="inputs-datos-editar">
+                <%= c.label 'Hora' %>
+                <%= c.text_field :hour, class: 'input-editar' %>
+            </div>
+            <div class="inputs-datos-editar">
+                <%= c.label 'Fecha' %>
+                <%= c.text_field :date, class: 'input-editar' %>
+            </div>
+            
+            <div class="div-boton-input"> <%= c.submit 'editar', class: 'boton_input' %> </div>
         <% end %>
     </div>
-    <div id="edit_info_celebracion">
+
+
+    <%# ///////////////////////datos de celebracion para editar////////////////////////////// %>
+    <div id="edit_info_celebracion" class= 'contenedores-formularios-edit'>
         <h4> informacion de la celebracion </h4>
         <%= form_with(url: celebration_u_path(id: @celebration.id), model: @celebration, remote: true) do |c| %>
-            <% @celebration.attributes.each do |attr_name, attr_value| %>
-                <% unless attr_name == 'id' || attr_name == 'marriage_id' || attr_name == 'created_at' || attr_name == 'updated_at' %>
-                    <div>
-                        <%= c.label attr_name %>
-                        <%= c.text_field attr_name %>
-                    </div>
-                <% end %>
-            <% end %>
-            <%= c.submit 'editar' %>
+            <div class="inputs-datos-editar">
+                <%= c.label 'Direccion' %>
+                <%= c.text_field :address, class: 'input-editar' %>
+            </div>
+            <div class="inputs-datos-editar">
+                <%= c.label 'Hora' %>
+                <%= c.text_field :hour, class: 'input-editar' %>
+            </div>
+            <div class="inputs-datos-editar">
+                <%= c.label 'Fecha' %>
+                <%= c.text_field :date, class: 'input-editar' %>
+            </div>
+            
+            <div class="div-boton-input"> <%= c.submit 'editar', class: 'boton_input' %> </div>
         <% end %>
     </div>
 </div>
 
-<%# DASHBOARD GRAFICOS INVITADOS CONFIRMADOS, NO CONFIRMADOS Y DIAS QUE FALTAN PARA CASARSE %>
-<div style="display: flex; justify-content: space-between">
+
+<%# /////////DASHBOARD GRAFICOS INVITADOS CONFIRMADOS, NO CONFIRMADOS Y DIAS QUE FALTAN PARA CASARSE//////////// %>
+<div style="display: flex; justify-content: space-between; height 40vh;">
     <div>
         <%= column_chart @datos, colors:['#FF3456'], messages:{empty: 'no hay invitados agregados'} %>
     </div>
     <div>
         <%= bar_chart 'dias que faltan para casarse': @dias %>
     </div>
-</div>
-
-<%# ///////////lista de productos contratados////////////////////
-no tengo como hacer que la lista este separada de los productos entregados, solicitados y por entregar. Ya que en mi aplicacion, un matrimonio contrata el servicio y adquiere el derecho a poder hacer una lista de invitados y crear las invitaciones para ellos %>
-
-<div>
-    <a href="<%= m_s_path(producto: 'lista-invitados') %>">
-        <div id="lista-invitados" class="producto_contratado">
-            <p> producto 1: lista de invitados </p>
-        </div>
-    </a>
-    <a href="<%= m_s_path(producto: 'invitaciones') %>">
-        <div id="invitacion" class="producto_contratado">
-            <p> producto2: crear invitaciones </p>
-        </div>
-    </a>
-    <a href="<%= t_i_path %>">
-        <div id="tutorial" class="producto_contratado">
-            tutoriales
-        </div>
-    </a>
-    <a href="<%= s_n_path %>">
-        <div id="calificar" class="producto_contratado">
-            califica el servicio
-        </div>
-    </a>
 </div>

@@ -2,38 +2,67 @@
     <h4 style="color: red;"> El usuario no pudo ser creado </h4>
 <% end %>
 
-<%# //////// vista show si entran a ver lista de invitados////////// %>
 <% if params[:producto] == 'lista-invitados' %>
-    <div style="display: flex, justify-content: space-around">
+<%# //////// vista show si entran a ver lista de invitados////////// %>
+    <div style="height: 90vh;">
         <div>
             <%= form_with(url: i_c_path, model: @invited, remote: true) do |f| %>
-                <%# ///ciclo que recorre una instancia de un invitado para crear un formulario creador de invitados//// %>
-                <% @invited.attributes.each do |attr_name, attr_value| %>
-                    <% unless attr_name == "created_at" || attr_name == "updated_at" || attr_name == "id"%>
-
-                        <% unless attr_name == "password_digest" %>
-                            <%= f.label attr_name%><br>
-                        <% else %>
-                            <%= f.label "codigo" %><br>
-                        <% end %>
-                        <%= f.text_field attr_name %><br>
-
-                    <% end %>
-                <% end %>
-
-                <%= f.submit 'crear invitado' %>
+                <div>
+                    <%= f.label 'nombre' %>
+                    <%= f.text_field :name, class: 'input-editar' %>
+                </div>
+                <br>
+                <div>
+                    <%= f.label 'apellido' %>
+                    <%= f.text_field :last_name, class: 'input-editar' %>
+                </div>
+                <br>
+                <div>
+                    <%= f.label 'fono' %>
+                    <%= f.text_field :phone, class: 'input-editar' %>
+                </div>
+                <br>
+                <div>
+                    <%= f.label 'mail' %>
+                    <%= f.text_field :email, class: 'input-editar' %>
+                </div>
+                <br>
+                <div>
+                    <%= f.label 'contraseña' %>
+                    <%= f.text_field :password_digest, class: 'input-editar' %>
+                </div>
+                <br>
+                <%= f.submit 'crear invitado', class: 'boton_input' %>
             <% end %>
         </div>
 
         <%# //////// lista de invitados del usuario activo//////////// %>
-        <div id="lista_invitados_matrimonio">
-            <h4> Mis invitados </h4>
-            <% @inviteds_marriage.each do |invited| %>
-                <p> nombre: <%= invited.invited.name %> || apellido: <%= invited.invited.last_name %> || fono: <%= invited.invited.phone %> || email: <%= invited.invited.email %> || codigo: <%= invited.invited.password_digest %>  </p>
-                <%= link_to 'eliminar', i_d_path(invited.invited.id), method: :delete %>
-            <% end %>
-        </div>
+
+        <table style='width: 100%; border-collapse: collapse;' id="lista_invitados_matrimonio">
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Fono</th>
+                <th>Mail</th>
+                <th>Contraseña </th>
+                <th>Invitacion </th>
+                <th>Confirmacion </th>
+            </tr>
+                <% @inviteds_marriage.each do |invited| %>
+                    <tr>
+                        <td><%= invited.invited.name %></td>
+                        <td><%= invited.invited.last_name %></td>
+                        <td><%= invited.invited.phone %></td>
+                        <td> <%= invited.invited.email %> </td>
+                        <td> <%= invited.invited.password_digest %> </td>
+                        <td> <%= link_to 'enviar invitacion' %> </td>
+                        <td> Sin confirmacion </td>
+                        <td> <%= link_to 'eliminar', i_d_path(invited.invited.id), method: :delete %> </td>
+                    </tr>
+                <% end %>
+        </table>
     </div>
+
 
 <% elsif params[:producto] == 'invitaciones' %>
 <%# //////// vista show si entran a ver las invitaciones para los invitados//////////// %>

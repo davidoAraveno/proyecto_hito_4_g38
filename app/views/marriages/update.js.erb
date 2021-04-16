@@ -1,18 +1,21 @@
 var edit_info = document.getElementById("edit_info");
 edit_info.innerHTML ="";
 edit_info.innerHTML =`
-<h4> Informacion personal de los novios </h4>
-<%= form_with(url: m_u_path(id: @marriage.id), model: @marriage, remote: true, method: :patch) do |f| %>
-    <% @marriage.attributes.each do |attr_name, attr_value|%>
-        <% unless attr_name == "id" || attr_name == "created_at" || attr_name == "updated_at" || attr_name == "password_digest" %>
-            <div>
-                <%= f.label attr_name %>
-                <%= f.text_field attr_name %>
+ <%= form_with(url: m_u_path(id: @marriage.id), model: @marriage, remote: true, method: :patch) do |f| %>
+            <div class="inputs-datos-editar">
+                <%= f.label 'nombre' %>
+                <%= f.text_field :name1, class: 'input-editar' %>
             </div>
+            <div class="inputs-datos-editar">
+                <%= f.label 'fono' %>
+                <%= f.text_field :phone_name1, class: 'input-editar' %>
+            </div>
+            <div class="inputs-datos-editar">
+                <%= f.label 'email' %>
+                <%= f.text_field :email_name1, class: 'input-editar' %>
+            </div>
+            <div><%= f.submit 'editar', class: 'boton_input' %></div>
         <% end %>
-    <% end %>
-    <div><%= f.submit 'editar' %></div>
-<% end %>
 `
 
 alert("datos actualizados")
