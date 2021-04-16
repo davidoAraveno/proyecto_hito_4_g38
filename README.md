@@ -1,6 +1,8 @@
 # README
 
 EL link de la pagina es www.juanpabloensegundos.cl (tiene ese nombre extraño porque hize uso de un dominio que mi polola compro hace un tiempo y nunca uso)
+ 
+ 
  DEPLOYMENT
   Fue subido a heroku junto a las contraseñas de paypal y mailgun que fueron guardadas en la aplicacion
   
